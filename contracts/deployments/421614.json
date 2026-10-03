@@ -7,5 +7,9 @@
   "netFold": "0x516479a53483b675Fe4629E3C63088c51cf6eFa7",
   "network": "arbitrum-sepolia",
   "settlementToken": "0xFFC95faa3d63Cde504a05B567C600B78C0b41892",
-  "sourceVerificationStatus": "pending"
+  "sourceVerificationStatus": "sourcify-exact-match",
+  "sourceVerificationUrl": "https://sourcify.dev/server/v2/contract/421614/0x516479a53483b675Fe4629E3C63088c51cf6eFa7?fields=all",
+  "sourcifyMatchId": "54580673",
+  "sourcifyVerificationId": "d604b690-a61e-4791-8580-5e53161c9ed1",
+  "sourceVerifiedAt": "2026-10-03T22:49:14Z"
 }
