@@ -5,3 +5,10 @@ contracts/.env
 contracts/deployments/*.tmp
 contracts/evidence/*.tmp
 *.key
+node_modules/
+.next/
+coverage/
+.env.local
+.vercel/
+.playwright-mcp/
+*.tsbuildinfo

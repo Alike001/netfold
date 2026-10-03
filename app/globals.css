@@ -1,0 +1,89 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, monospace;
+  --color-ink: #111315;
+  --color-paper: #f7f7f3;
+  --color-panel: #ffffff;
+  --color-line: #dfe2e5;
+  --color-arb: #1f6feb;
+  --color-arb-soft: #eaf2ff;
+  --color-success: #138a5b;
+  --color-success-soft: #e8f6ef;
+  --color-warning: #a96808;
+  --color-danger: #c43832;
+  --ease-settle: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+:root {
+  color-scheme: light;
+  --background: #f7f7f3;
+  --foreground: #111315;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-geist-sans), sans-serif;
+}
+
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+::selection {
+  background: #b9d2ff;
+  color: #111315;
+}
+
+.page-grid {
+  background-image:
+    linear-gradient(to right, rgba(17, 19, 21, 0.045) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(17, 19, 21, 0.045) 1px, transparent 1px);
+  background-size: 48px 48px;
+}
+
+.hairline-grid {
+  background-image: linear-gradient(to right, rgba(17, 19, 21, 0.06) 1px, transparent 1px);
+  background-size: 25% 100%;
+}
+
+.tabular {
+  font-variant-numeric: tabular-nums;
+}
+
+.balance-row {
+  display: grid;
+  grid-template-columns: minmax(8rem, 1.3fr) repeat(3, minmax(7rem, 1fr));
+}
+
+@media (max-width: 767px) {
+  .balance-row {
+    grid-template-columns: minmax(7rem, 1.2fr) repeat(3, minmax(6.5rem, 1fr));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+  }
+}
