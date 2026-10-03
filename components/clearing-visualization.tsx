@@ -32,10 +32,10 @@ export function ClearingVisualization() {
       <div className="flex items-center justify-between border-b border-line px-5 py-4">
         <div>
           <p className="text-xs font-bold tracking-[0.14em] text-[#6a737b] uppercase">Clearing preview</p>
-          <p className="mt-1 text-sm font-semibold">Run #001 · USDG</p>
+          <p className="mt-1 text-sm font-semibold">Run #001 · Canonical Paxos test USDG</p>
         </div>
-        <span className="inline-flex items-center gap-2 text-xs font-semibold text-success">
-          <span className="size-2 rounded-full bg-success" /> Live evidence
+        <span className="inline-flex items-center gap-2 text-right text-[10px] leading-tight font-semibold text-success sm:text-xs">
+          <span className="size-2 shrink-0 rounded-full bg-success" /> Live on Arbitrum Sepolia
         </span>
       </div>
 

@@ -32,7 +32,7 @@ export default function BreakPage() {
         <section className="grid gap-5 lg:grid-cols-2">
           {netfoldData.failures.map((failure, index) => (
             <article key={failure.title} className="overflow-hidden rounded-xl border border-[#e1b9b6] bg-white">
-              <div className="flex items-center justify-between border-b border-[#efd2d0] bg-[#fff4f3] px-6 py-4"><Badge tone="danger">Live Arbitrum eth_call</Badge><Ban size={19} className="text-danger" /></div>
+              <div className="flex items-center justify-between border-b border-[#efd2d0] bg-[#fff4f3] px-6 py-4"><Badge tone="danger">Live Arbitrum simulation</Badge><Ban size={19} className="text-danger" /></div>
               <div className="p-6 sm:p-8"><p className="text-sm text-[#747d85]">{index === 0 ? "Before coverage" : "After final settlement"}</p><h2 className="mt-2 text-3xl font-semibold tracking-[-0.045em]">{failure.title}</h2><div className="mt-8 grid grid-cols-2 gap-3"><div className="rounded-md bg-[#f6f6f4] p-4"><span className="text-xs text-[#737c84]">Expected</span><strong className="mt-2 block text-danger">BLOCKED</strong></div><div className="rounded-md bg-[#f6f6f4] p-4"><span className="text-xs text-[#737c84]">Actual</span><strong className="mt-2 block">InvalidRunState</strong></div></div><div className="mt-6 rounded-md bg-ink p-4 font-mono text-xs leading-6 text-[#c5cbd1]"><p>selector {failure.selector}</p><p className="mt-1 truncate" title={failure.revertData}>{failure.revertData}</p></div><p className="mt-5 text-sm leading-6 text-[#68717a]">{failure.evidence}</p></div>
             </article>
           ))}
@@ -40,7 +40,7 @@ export default function BreakPage() {
 
         <section className="mt-20">
           <div className="grid gap-8 lg:grid-cols-[0.75fr_1.25fr]">
-            <div><Badge tone="blue">Foundry tests · not live transactions</Badge><h2 className="mt-5 text-4xl font-semibold tracking-[-0.055em] sm:text-6xl">Test-suite attack cases</h2><p className="mt-6 text-lg leading-8 text-[#616a72]">These checks support engineering confidence. They are not a security audit.</p></div>
+            <div><Badge tone="blue">Foundry test · not live transactions</Badge><h2 className="mt-5 text-4xl font-semibold tracking-[-0.055em] sm:text-6xl">Test-suite attack cases</h2><p className="mt-6 text-lg leading-8 text-[#616a72]">These checks support engineering confidence. They are not a security audit.</p></div>
             <div className="grid grid-cols-1 gap-px overflow-hidden rounded-xl border border-line bg-line sm:grid-cols-2">
               {attackCases.map((item) => <div key={item} className="flex items-center gap-3 bg-white p-5"><CheckCircle2 size={17} className="shrink-0 text-success" /><span className="font-medium">{item}</span></div>)}
               <a href="https://github.com/foundry-rs/foundry" target="_blank" rel="noreferrer" className="flex items-center justify-between bg-[#edf3fb] p-5 font-medium text-arb">Foundry methodology <ExternalLink size={14} /></a>

@@ -1,11 +1,7 @@
 import Link from "next/link";
+import { NavLinks } from "@/components/nav-links";
 import { WalletButton } from "@/components/wallet-button";
-
-const links = [
-  { href: "/app", label: "Product" },
-  { href: "/proof", label: "Proof" },
-  { href: "/break", label: "Security" },
-] as const;
+import { REPOSITORY_URL } from "@/lib/constants";
 
 export function SiteHeader() {
   return (
@@ -19,14 +15,10 @@ export function SiteHeader() {
         </Link>
         <div className="flex items-center gap-2 lg:gap-6">
           <nav className="hidden items-center gap-6 text-sm font-medium text-[#555d65] md:flex" aria-label="Main navigation">
-            {links.map((link) => (
-              <Link key={link.href} href={link.href} className="transition hover:text-ink">
-                {link.label}
-              </Link>
-            ))}
-            <span className="cursor-not-allowed text-[#9aa0a6]" title="Repository URL pending">
+            <NavLinks />
+            <a href={REPOSITORY_URL} target="_blank" rel="noreferrer" className="rounded-sm transition hover:text-ink">
               GitHub
-            </span>
+            </a>
           </nav>
           <WalletButton />
         </div>

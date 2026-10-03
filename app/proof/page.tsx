@@ -12,22 +12,53 @@ export default function ProofPage() {
   return (
     <main className="min-h-screen bg-white">
       <section className="border-b border-line bg-paper">
-        <div className="mx-auto max-w-[1440px] px-6 py-20 lg:px-10 lg:py-28">
-          <Badge tone="success">Live Arbitrum Sepolia evidence</Badge>
-          <h1 className="mt-6 max-w-5xl text-5xl leading-[0.98] font-semibold tracking-[-0.065em] sm:text-7xl">One settlement, independently verifiable from end to end.</h1>
-          <p className="mt-7 max-w-2xl text-lg leading-8 text-[#606971]">Every value below is derived from committed deployment receipts and historical USDG balance reads for Run #001.</p>
+        <div className="mx-auto max-w-[1440px] px-6 py-10 sm:py-14 lg:px-10 lg:py-16">
+          <div className="flex flex-wrap gap-2"><Badge tone="success">Live on Arbitrum Sepolia</Badge><Badge>Canonical Paxos test USDG</Badge><Badge tone="success">Settled</Badge></div>
+          <div className="mt-6 grid gap-7 lg:grid-cols-[0.8fr_1.2fr] lg:items-end">
+            <div>
+              <h1 className="max-w-3xl text-5xl leading-[0.94] font-semibold tracking-[-0.065em] sm:text-7xl">Verify Run #001.</h1>
+              <p className="mt-5 max-w-xl text-base leading-7 text-[#606971] sm:text-lg">The contract, asset, accounting, and settlement transaction are linked directly to committed Arbitrum Sepolia evidence.</p>
+            </div>
+            <div className="rounded-xl border border-[#cbd1d7] bg-white p-5 shadow-[0_18px_50px_rgba(22,34,48,0.08)] sm:p-6">
+              <dl className="grid gap-4 sm:grid-cols-2">
+                <div><dt className="text-xs font-semibold tracking-[0.08em] text-[#737c84] uppercase">NetFold deployed address</dt><dd className="mt-1"><EvidenceLink value={d.deployment.contract} href={d.links.address(d.deployment.contract)} /></dd></div>
+                <div><dt className="text-xs font-semibold tracking-[0.08em] text-[#737c84] uppercase">Paxos USDG address</dt><dd className="mt-1"><EvidenceLink value={d.deployment.token} href={d.links.address(d.deployment.token)} /></dd></div>
+                <div className="sm:col-span-2"><dt className="text-xs font-semibold tracking-[0.08em] text-[#737c84] uppercase">Settlement transaction</dt><dd className="mt-1"><EvidenceLink value={d.run.settlementHash} href={d.links.tx(d.run.settlementHash)} kind="hash" /></dd></div>
+              </dl>
+            </div>
+          </div>
+          <div className="mt-7 grid grid-cols-3 gap-px overflow-hidden rounded-lg border border-line bg-line md:grid-cols-6">
+            {[
+              ["Chain", d.network.name, String(d.network.chainId)],
+              ["Run", `#${String(d.run.id).padStart(3, "0")}`, null],
+              ["Gross", `${d.display.gross} USDG`, null],
+              ["Net liquidity", `${formatUsdg(d.run.totalDebit)} USDG`, null],
+              ["Compression", d.display.compression, null],
+              ["State", d.run.state, null],
+            ].map(([label, value, detail]) => (
+              <div key={label} className="min-w-0 bg-white p-3 sm:p-4">
+                <p className="text-[10px] font-bold tracking-[0.1em] text-[#737c84] uppercase">{label}</p>
+                <p className="tabular mt-2 text-base leading-tight font-semibold tracking-[-0.03em] sm:text-lg">{value}</p>
+                {detail && <p className="mt-1 font-mono text-[10px] text-[#737c84]">{detail}</p>}
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
-      <div className="mx-auto max-w-[1440px] px-6 py-16 lg:px-10 lg:py-24">
-        <section className="grid gap-px overflow-hidden rounded-xl border border-line bg-line md:grid-cols-2 xl:grid-cols-4">
+      <div className="mx-auto max-w-[1440px] px-6 py-14 lg:px-10 lg:py-20">
+        <section>
+          <p className="text-sm text-[#68717a]">Accounting reconciliation</p>
+          <h2 className="mt-2 text-3xl font-semibold tracking-[-0.04em]">Every unit accounted for.</h2>
+          <div className="mt-6 grid gap-px overflow-hidden rounded-xl border border-line bg-line md:grid-cols-2 xl:grid-cols-3">
           {[
-            ["Network", d.network.name], ["Chain ID", String(d.network.chainId)], ["Run", `#${String(d.run.id).padStart(3, "0")}`], ["Final state", d.run.state],
-            ["Gross amount", `${d.display.gross} USDG`], ["Total debit", `${formatUsdg(d.run.totalDebit)} USDG`], ["Total credit", `${formatUsdg(d.run.totalCredit)} USDG`], ["Compression", d.display.compression],
-            ["Coverage", `${formatUsdg(d.run.totalFunded)} USDG`], ["Accounted liability", `${formatUsdg(d.run.accountedLiability)} USDG`], ["Settlement block", d.run.settlementBlock.toLocaleString("en-US")], ["Verification", "Sourcify exact match"],
+            ["Total debit", `${formatUsdg(d.run.totalDebit)} USDG`], ["Total credit", `${formatUsdg(d.run.totalCredit)} USDG`],
+            ["Coverage", `${formatUsdg(d.run.totalFunded)} USDG`], ["Accounted liability", `${formatUsdg(d.run.accountedLiability)} USDG`],
+            ["Settlement block", d.run.settlementBlock.toLocaleString("en-US")], ["Verification", "Sourcify exact match"],
           ].map(([label, value]) => (
             <div key={label} className="bg-white p-5 sm:p-6"><p className="text-xs font-semibold tracking-[0.1em] text-[#737c84] uppercase">{label}</p><p className="tabular mt-4 text-xl font-semibold tracking-[-0.03em]">{value}</p></div>
           ))}
+          </div>
         </section>
 
         <section className="mt-14 grid gap-8 lg:grid-cols-2">

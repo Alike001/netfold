@@ -9,6 +9,9 @@ node_modules/
 .next/
 coverage/
 .env.local
+.env
+.env.*
+!.env.example
 .vercel/
 .playwright-mcp/
 *.tsbuildinfo

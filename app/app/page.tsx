@@ -15,7 +15,7 @@ export default function WorkspacePage() {
       <div className="mx-auto max-w-[1440px] px-5 py-10 sm:px-6 lg:px-10 lg:py-14">
         <div className="flex flex-col gap-7 border-b border-[#ced2d5] pb-9 md:flex-row md:items-end md:justify-between">
           <div>
-            <div className="flex flex-wrap items-center gap-3"><Badge tone="success">{netfoldData.run.state}</Badge><span className="text-sm text-[#657079]">Arbitrum Sepolia · Paxos USDG</span></div>
+            <div className="flex flex-wrap items-center gap-2"><Badge tone="success">{netfoldData.run.state}</Badge><Badge tone="blue">Live on Arbitrum Sepolia</Badge><Badge>Canonical Paxos test USDG</Badge></div>
             <h1 className="mt-5 text-5xl font-semibold tracking-[-0.06em] sm:text-7xl">Clearing Run #001</h1>
           </div>
           <Button disabled title="Run creation is intentionally read-only in this phase" variant="secondary"><Plus size={16} /> New clearing run</Button>

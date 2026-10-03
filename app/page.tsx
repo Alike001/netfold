@@ -11,16 +11,27 @@ export default function LandingPage() {
   return (
     <main className="w-full max-w-full overflow-x-hidden">
       <section className="page-grid border-b border-line">
-        <div className="mx-auto grid min-h-[calc(100svh-72px)] max-w-[1440px] items-center gap-14 px-6 py-20 lg:grid-cols-[0.9fr_1.1fr] lg:px-10 lg:py-24">
+        <div className="mx-auto grid min-h-[calc(100svh-72px)] max-w-[1440px] items-start gap-12 px-6 py-14 sm:py-16 lg:grid-cols-[0.9fr_1.1fr] lg:items-center lg:px-10 lg:py-20">
           <div>
-            <p className="text-sm font-semibold text-arb">Covered USDG clearing on Arbitrum</p>
-            <h1 className="mt-6 max-w-4xl text-[clamp(3.2rem,6vw,6.8rem)] leading-[0.9] font-semibold tracking-[-0.075em]">
+            <div className="flex flex-wrap gap-2">
+              <Badge tone="blue">Live on Arbitrum Sepolia</Badge>
+              <Badge>Canonical Paxos test USDG</Badge>
+            </div>
+            <h1 className="mt-6 max-w-4xl text-[clamp(3rem,6vw,6.8rem)] leading-[0.9] font-semibold tracking-[-0.075em]">
               Settle the difference, not every obligation.
             </h1>
-            <p className="mt-8 max-w-2xl text-lg leading-8 text-[#59636c] sm:text-xl">
+            <p className="mt-7 max-w-2xl text-lg leading-8 text-[#59636c] sm:text-xl">
               NetFold compresses mutually approved USDG obligations into fully covered net settlements on Arbitrum.
             </p>
-            <div className="mt-9 flex flex-col gap-3 sm:flex-row">
+            <div className="mt-7 grid max-w-2xl grid-cols-[1fr_auto_1fr_auto_1fr] items-center border-y border-[#ccd2d7] py-4">
+              {[[netfoldData.display.gross, "USDG gross"], [netfoldData.display.liquidity, "USDG liquidity"], [netfoldData.display.compression, "compression"]].map(([value, label]) => (
+                <div key={label} className="min-w-0 px-1 first:pl-0 sm:px-3">
+                  <strong className="tabular block text-2xl tracking-[-0.05em] sm:text-3xl">{value}</strong>
+                  <span className="mt-1 block text-[10px] leading-tight text-[#68717a] uppercase sm:text-xs">{label}</span>
+                </div>
+              )).flatMap((item, index) => index < 2 ? [item, <ArrowRight key={`arrow-${index}`} size={15} className="text-arb" />] : [item])}
+            </div>
+            <div className="mt-7 flex flex-col gap-3 sm:flex-row">
               <Link href="/app" className="inline-flex min-h-12 items-center justify-center gap-2 rounded-md bg-ink px-5 text-sm font-semibold text-white transition hover:bg-[#292d31]">
                 Explore live settlement <ArrowRight size={16} />
               </Link>
@@ -82,7 +93,7 @@ export default function LandingPage() {
         <div className="mx-auto max-w-[1440px] px-6 py-28 lg:px-10 lg:py-40">
           <div className="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
             <div>
-              <Badge tone="success">Live on Arbitrum Sepolia</Badge>
+              <div className="flex flex-wrap gap-2"><Badge tone="success">Live on Arbitrum Sepolia</Badge><Badge>Canonical Paxos test USDG</Badge><Badge tone="success">Settled</Badge></div>
               <h2 className="mt-5 max-w-3xl text-4xl leading-[1.02] font-semibold tracking-[-0.055em] sm:text-6xl">Run #001 is settled and independently inspectable.</h2>
             </div>
             <Link href="/proof" className="inline-flex items-center gap-2 font-semibold text-arb hover:underline">Inspect settlement proof <ArrowRight size={16} /></Link>
