@@ -1,0 +1,14 @@
+{
+  "snapshot_date": "2026-10-03",
+  "repositories": [
+    {"repo":"OffchainLabs/nitro","role":"Arbitrum Nitro node and rollup protocol implementation","use_for_mvp":"reference only"},
+    {"repo":"OffchainLabs/arbitrum-docs","role":"developer documentation source","use_for_mvp":"high"},
+    {"repo":"OffchainLabs/arbitrum-sdk","role":"TypeScript SDK for bridging and cross-chain messaging","use_for_mvp":"optional"},
+    {"repo":"OffchainLabs/nitro-contracts","role":"rollup, fraud-proof and precompile interfaces","use_for_mvp":"reference only"},
+    {"repo":"OffchainLabs/arbitrum-mpp","role":"Machine Payments Protocol implementation for Arbitrum","use_for_mvp":"not planned, competitive research"},
+    {"repo":"OffchainLabs/nitro-devnode","role":"local Nitro dev node and Stylus test support","use_for_mvp":"not needed for Solidity-only sprint"},
+    {"repo":"OffchainLabs/token-bridge-contracts","role":"canonical token bridge contracts","use_for_mvp":"not needed"},
+    {"repo":"OffchainLabs/arbitrum-chain-sdk","role":"custom Arbitrum chain tooling","use_for_mvp":"not needed"},
+    {"repo":"OffchainLabs/stylus-sdk-rs","role":"Rust SDK for Stylus","use_for_mvp":"not planned"}
+  ]
+}
