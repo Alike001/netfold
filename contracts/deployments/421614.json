@@ -1,0 +1,11 @@
+{
+  "chainId": 421614,
+  "deployer": "0x9Ef29De25594f88eB51D45Ed9547Bc6463Edbfc6",
+  "deploymentBlock": 315465848,
+  "deploymentTransactionHash": "0x6bbcb9f0a32f2309d4c0e9a76fcd8c0ee000bac2232dad8097ede49115cf0cb0",
+  "explorer": "https://sepolia.arbiscan.io",
+  "netFold": "0x516479a53483b675Fe4629E3C63088c51cf6eFa7",
+  "network": "arbitrum-sepolia",
+  "settlementToken": "0xFFC95faa3d63Cde504a05B567C600B78C0b41892",
+  "sourceVerificationStatus": "pending"
+}
