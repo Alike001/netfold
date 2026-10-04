@@ -23,7 +23,7 @@ const horizons = [
 
 export function FounderHouseRoadmap() {
   return (
-    <section id="founder-house-roadmap" className="mx-auto max-w-[1440px] scroll-mt-20 px-6 py-28 lg:px-10 lg:py-40">
+    <section id="founder-house-roadmap" className="mx-auto max-w-[1440px] scroll-mt-20 px-6 pt-28 pb-16 lg:px-10 lg:pt-40 lg:pb-20">
       <div className="grid gap-12 lg:grid-cols-[0.72fr_1.28fr]">
         <div>
           <p className="text-sm font-bold tracking-[0.13em] text-arb uppercase">Three-horizon roadmap</p>
