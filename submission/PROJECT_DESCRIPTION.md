@@ -46,4 +46,6 @@ NetFold is not simply a balance calculator. Its public state machine ties each f
 
 ## Roadmap
 
-The current product supports manual covered USDG clearing runs. Founder House work would focus on accounting and DAO treasury integrations, marketplace settlement, API-driven recurring windows, and machine-payment/x402/MPP clearing.
+NetFold currently provides a live USDG clearing workspace with real multi-counterparty settlement. Next, it would add recurring clearing windows, business/team workspaces, and accounting and treasury integrations.
+
+At Founder House, the longer-term **Issuer Rails** direction would explore branded business settlement tokens backed 1:1 by USDG, public reserve verification, holder redemption into USDG, and multi-issuer clearing through USDG. Issuer Rails is not implemented in NetFold today; this repository contains no stablecoin issuance contracts.

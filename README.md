@@ -84,8 +84,9 @@ This is canonical Paxos **test** USDG on Arbitrum Sepolia. Testnet funds have no
 - `contracts/evidence/421614-run-001.json` — committed live lifecycle and accounting evidence.
 - Next.js App Router, TypeScript, and Tailwind CSS v4 — public product and proof surfaces.
 - `lib/netfold-data.ts` — validates and normalizes the committed evidence into one typed frontend source.
-- viem and wagmi — Arbitrum Sepolia types, injected-wallet connection, and network switching.
-- No database, AI service, private backend, or frontend write workflow.
+- viem and wagmi — live contract reads, event discovery, injected-wallet connection, network switching, and receipt-confirmed writes.
+- `/create` and `/runs/[runId]` — real run creation and role-aware obligation, funding, settlement, expiry, and refund actions.
+- No database, AI service, private backend, custodial wallet, or hidden transaction signer.
 
 ## Security properties
 
@@ -102,7 +103,7 @@ These properties are tested but not audited. NetFold provides no credit, insuran
 
 ## Test summary
 
-- Frontend: 11 presentation and evidence-reconciliation tests.
+- Frontend: 29 presentation, evidence, validation, role/action, and transaction-error tests.
 - Contracts: 40 passing tests and 0 failures.
 - Fuzzing: 3 campaigns × 256 runs.
 - Invariants: 5 invariants × 128 runs × 64 calls.
@@ -133,16 +134,31 @@ The public RPC defaults to `https://sepolia-rollup.arbitrum.io/rpc`. An alternat
 - Arbitrum Sepolia testnet only; testnet funds have no value.
 - Unaudited and not production-ready.
 - No legal-netting opinion, KYC/KYB, credit, insurance, FX, or default mutualization.
-- Manual run creation and a single canonical test USDG settlement asset.
+- Single canonical test USDG settlement asset.
 - Maximum 8 participants and 32 obligations per run.
-- The public product prioritizes read-only evidence; the complete contract write workflow is intentionally not exposed.
+- Event-based wallet history uses a public RPC without an indexer and may become slower as chain history grows.
+- Human-readable obligation references remain local browser metadata; only their hashes are stored onchain.
 
 Contract-specific documentation is in [`contracts/README.md`](contracts/README.md).
 
 ## Roadmap
 
-- Accounting and ERP integrations
-- DAO treasury integrations
-- Marketplace settlement
-- API-driven recurring clearing windows
-- Machine-payment, x402, and MPP clearing
+**Now**
+
+- USDG clearing workspace
+- Real multi-counterparty settlement
+
+**Next**
+
+- Recurring clearing windows
+- Business and team workspaces
+- Accounting and treasury integrations
+
+**Founder House — Issuer Rails**
+
+- Businesses launch branded settlement tokens backed 1:1 by USDG
+- Public reserve verification
+- Holder redemption into USDG
+- Multi-issuer clearing through USDG
+
+Issuer Rails is roadmap scope only. NetFold does not currently issue stablecoins or branded tokens, and no issuer contracts are included in this repository.

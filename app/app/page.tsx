@@ -1,13 +1,16 @@
 import { ArrowRight, Check, ExternalLink, LockKeyhole, Plus } from "lucide-react";
+import Link from "next/link";
+import type { Route } from "next";
 import type { Metadata } from "next";
 import { EvidenceLink } from "@/components/evidence-link";
 import { MetricCard } from "@/components/metric-card";
 import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
+import { TestingHelp } from "@/components/testing-help";
+import { WalletRunDashboard } from "@/components/wallet-run-dashboard";
 import { netfoldData } from "@/lib/netfold-data";
 import { formatUsdg } from "@/lib/utils";
 
-export const metadata: Metadata = { title: "Clearing Run #001" };
+export const metadata: Metadata = { title: "Business settlement workspace" };
 
 export default function WorkspacePage() {
   return (
@@ -15,11 +18,23 @@ export default function WorkspacePage() {
       <div className="mx-auto max-w-[1440px] px-5 py-10 sm:px-6 lg:px-10 lg:py-14">
         <div className="flex flex-col gap-7 border-b border-[#ced2d5] pb-9 md:flex-row md:items-end md:justify-between">
           <div>
-            <div className="flex flex-wrap items-center gap-2"><Badge tone="success">{netfoldData.run.state}</Badge><Badge tone="blue">Live on Arbitrum Sepolia</Badge><Badge>Canonical Paxos test USDG</Badge></div>
-            <h1 className="mt-5 text-5xl font-semibold tracking-[-0.06em] sm:text-7xl">Clearing Run #001</h1>
+            <p className="text-sm font-bold uppercase tracking-[0.12em] text-arb">Business settlement workspace</p>
+            <h1 className="mt-3 max-w-4xl text-5xl font-semibold tracking-[-0.06em] sm:text-7xl">Settle the difference, not every obligation.</h1>
+            <p className="mt-5 max-w-2xl text-base leading-7 text-[#68717a]">Create multi-counterparty USDG runs, collect debtor acceptance, fund final net positions, and settle on Arbitrum.</p>
           </div>
-          <Button disabled title="Run creation is intentionally read-only in this phase" variant="secondary"><Plus size={16} /> New clearing run</Button>
+          <Link href={"/create" as Route} className="inline-flex min-h-12 shrink-0 items-center justify-center gap-2 rounded-md bg-ink px-5 text-sm font-semibold text-white hover:bg-[#292d31]"><Plus size={16} /> Create clearing run</Link>
         </div>
+
+        <ol aria-label="NetFold product lifecycle" className="mt-6 grid gap-px overflow-hidden rounded-lg border border-line bg-line sm:grid-cols-5">
+          {["Record", "Accept", "Net", "Cover", "Settle"].map((step, index) => <li key={step} className="flex items-center gap-3 bg-white px-4 py-4"><span className="font-mono text-xs text-arb">0{index + 1}</span><span className="text-sm font-semibold">{step}</span></li>)}
+        </ol>
+
+        <WalletRunDashboard />
+        <div className="mt-10"><TestingHelp /></div>
+
+        <section className="mt-16 border-t border-[#ced2d5] pt-12">
+          <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between"><div><div className="flex flex-wrap items-center gap-2"><Badge tone="success">{netfoldData.run.state}</Badge><Badge tone="blue">Live on Arbitrum Sepolia</Badge><Badge>Canonical Paxos test USDG</Badge></div><p className="mt-5 text-sm font-bold uppercase tracking-[0.12em] text-arb">Verified live example</p><h2 className="mt-2 text-4xl font-semibold tracking-[-0.055em] sm:text-6xl">Clearing Run #001</h2></div><Link href={"/runs/1" as Route} className="inline-flex items-center gap-2 text-sm font-semibold text-arb hover:underline">Open live contract view <ArrowRight size={15} /></Link></div>
+        </section>
 
         <section className="mt-8 grid gap-3 md:grid-cols-3">
           <MetricCard label="Gross obligations" value={netfoldData.display.gross} suffix="USDG" />

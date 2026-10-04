@@ -17,6 +17,14 @@ export function formatUsdg(baseUnits: number, options?: { technical?: boolean })
   }).format(value);
 }
 
+export function formatUsdgBigint(baseUnits: bigint, options?: { technical?: boolean }) {
+  if (baseUnits < 0n) throw new Error("USDG base units must be non-negative");
+  const whole = baseUnits / 1_000_000n;
+  const fraction = (baseUnits % 1_000_000n).toString().padStart(6, "0");
+  const trimmed = options?.technical ? fraction : fraction.replace(/0+$/, "");
+  return `${whole.toLocaleString("en-US")}${trimmed ? `.${trimmed}` : ""}`;
+}
+
 export function formatCompression(bps: number) {
   if (!Number.isInteger(bps) || bps < 0 || bps > 10_000) {
     throw new Error("Compression basis points must be between 0 and 10,000");

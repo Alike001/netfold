@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "sync:abi": "node scripts/sync-netfold-abi.mjs",
     "start": "next start",
     "lint": "eslint .",
     "test": "vitest run"

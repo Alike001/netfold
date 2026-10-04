@@ -11,7 +11,8 @@ const steps = [
   ["Record", "Businesses create USDG obligations inside a bounded clearing run."],
   ["Accept", "The named debtor explicitly accepts exactly what it owes."],
   ["Net", "NetFold freezes the batch and calculates final debit and credit positions."],
-  ["Cover & settle", "Net debtors fund exact residual balances. Nothing releases until fully covered."],
+  ["Cover", "Net debtors fund their exact residual balances. Nothing releases before full coverage."],
+  ["Settle", "Anyone can trigger atomic distribution once every final net debit is covered."],
 ] as const;
 
 export function ProcessFlow() {

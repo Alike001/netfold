@@ -2,6 +2,7 @@ import { ArrowRight, CheckCircle2, ExternalLink, Landmark, Network, ShieldCheck 
 import Link from "next/link";
 import { ClearingVisualization } from "@/components/clearing-visualization";
 import { EvidenceLink } from "@/components/evidence-link";
+import { FounderHouseRoadmap } from "@/components/founder-house-roadmap";
 import { ProcessFlow } from "@/components/process-flow";
 import { Badge } from "@/components/ui/badge";
 import { netfoldData } from "@/lib/netfold-data";
@@ -21,7 +22,7 @@ export default function LandingPage() {
               Settle the difference, not every obligation.
             </h1>
             <p className="mt-7 max-w-2xl text-lg leading-8 text-[#59636c] sm:text-xl">
-              NetFold compresses mutually approved USDG obligations into fully covered net settlements on Arbitrum.
+              NetFold is a business settlement workspace that compresses mutually approved USDG obligations into fully covered net settlements on Arbitrum.
             </p>
             <div className="mt-7 grid max-w-2xl grid-cols-[1fr_auto_1fr_auto_1fr] items-center border-y border-[#ccd2d7] py-4">
               {[[netfoldData.display.gross, "USDG gross"], [netfoldData.display.liquidity, "USDG liquidity"], [netfoldData.display.compression, "compression"]].map(([value, label]) => (
@@ -115,20 +116,7 @@ export default function LandingPage() {
         </div>
       </section>
 
-      <section className="mx-auto max-w-[1440px] px-6 py-28 lg:px-10 lg:py-40">
-        <div className="grid gap-14 lg:grid-cols-2">
-          <div>
-            <p className="text-sm font-bold tracking-[0.13em] text-arb uppercase">Founder House roadmap</p>
-            <h2 className="mt-5 text-4xl font-semibold tracking-[-0.05em] sm:text-6xl">Start with a run. Build toward a clearing layer.</h2>
-          </div>
-          <div className="divide-y divide-line border-y border-line">
-            <div className="py-6"><p className="font-semibold">Today</p><p className="mt-2 text-[#606971]">Manual, fully covered USDG clearing runs.</p></div>
-            {["Accounting integrations", "DAO treasury integrations", "Marketplace settlement", "API-driven recurring clearing windows", "Machine-payment / x402 / MPP clearing"].map((item) => (
-              <div key={item} className="flex items-center justify-between py-5"><span>{item}</span><ArrowRight size={15} className="text-[#9aa1a8]" /></div>
-            ))}
-          </div>
-        </div>
-      </section>
+      <FounderHouseRoadmap />
 
       <section className="bg-ink px-6 py-28 text-white lg:py-36">
         <div className="mx-auto flex max-w-[1200px] flex-col items-start justify-between gap-10 md:flex-row md:items-end">

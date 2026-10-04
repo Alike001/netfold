@@ -46,4 +46,4 @@ Keep the distinction between `LIVE ARBITRUM SIMULATION` and `FOUNDRY TEST` visib
 
 Return to the roadmap on the landing page.
 
-“Today NetFold supports manual covered USDG clearing runs. At Founder House, I would connect it to accounting systems, DAO treasuries, marketplaces, recurring clearing APIs, and machine-payment flows such as x402 and MPP. The goal is a practical clearing layer for stablecoin-native operations.”
+“Today NetFold is a live USDG clearing workspace for real multi-counterparty settlement. Next are recurring clearing windows, business/team workspaces, and accounting and treasury integrations. At Founder House, Issuer Rails would explore branded business settlement tokens backed 1:1 by USDG, public reserve verification, redemption into USDG, and multi-issuer clearing through that common USDG layer. Issuer Rails is roadmap scope—not functionality in this build.”

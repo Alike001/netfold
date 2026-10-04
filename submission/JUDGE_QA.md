@@ -54,4 +54,4 @@ No. The claim is 70% gross-to-net compression: 200 USDG of gross obligations bec
 
 ## What would you build at Founder House?
 
-Accounting and DAO treasury integrations first, then marketplace settlement and API-driven recurring windows. The longer-term direction is covered clearing for machine-payment flows such as x402 and MPP.
+Next I would add recurring clearing windows, business/team workspaces, and accounting and treasury integrations. The Founder House direction is Issuer Rails: branded business settlement tokens backed 1:1 by USDG, public reserve verification, holder redemption into USDG, and multi-issuer clearing through the common USDG layer. That issuer architecture is roadmap scope only and is not implemented in the current contract or product.
