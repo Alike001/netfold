@@ -10,35 +10,43 @@ Open the landing page.
 
 Point to the `200 → 60 → 70%` equation and the “Explore live settlement” CTA.
 
-## 0:20–0:50 — Obligations and acceptance
+## 0:20–0:40 — Usable business workspace
 
 Open `/app`.
 
-“Run #001 contains three obligations: Studio owes Auditor 100, Auditor owes Infrastructure 60, and Infrastructure owes Studio 40. Each obligation is accepted by its named debtor. Acceptance matters because nobody else can commit a debtor to an amount.”
+“NetFold is a usable business settlement workspace, not only a proof viewer. A connected wallet can create runs, discover the runs it created, and see pending obligations that require its attention.”
 
-Show the three `ACCEPTED` cards and briefly indicate their proposal and acceptance evidence links. Do not read hashes aloud.
+Point to `Create clearing run`, `Your runs`, `Needs your attention`, and the `Record → Accept → Net → Cover → Settle` lifecycle.
 
-## 0:50–1:20 — Net positions and full coverage
+## 0:40–1:05 — Real run creation
 
-Point to the net-position panel.
+Open `/create`.
 
-“After offsetting what each party owes and receives, Studio pays 60, Auditor receives 40, and Infrastructure receives 20. The run is closed and immutable. Studio then funds exactly 60 USDG. NetFold blocks settlement until the complete run is covered.”
+“The creator chooses two to eight participants and a future funding deadline. NetFold validates the addresses and network, then submits the real `createRun` transaction. After its receipt is confirmed, the app decodes the new run ID and opens its live workspace.”
 
-Show the lifecycle: `CREATED → ACCEPTED → CLOSED → COVERED → SETTLED`.
+Transition to the completed production-browser Run #002 at `/runs/2`.
 
-## 1:20–1:50 — Live Arbitrum proof
+## 1:05–1:35 — Production-browser Run #002
+
+Open `/runs/2`.
+
+“This run was completed through the public Vercel product with three connected wallets. Alice owes Bob 10 USDG, Bob owes Carol 6, and Carol owes Alice 4. Each named debtor accepts its own obligation. Closing freezes the batch and produces final positions: Alice pays 6, Bob receives 4, and Carol receives 2—20 USDG gross compressed into 6 USDG of required liquidity.”
+
+Show the accepted obligations, finalized positions, exact 6 USDG approval and coverage, `SETTLED` state, and transaction links. Explain that its confirmed receipts were independently reconstructed from Arbitrum Sepolia. Do not read hashes aloud.
+
+## 1:35–1:55 — Canonical Run #001 proof
 
 Open `/proof`.
 
-“This is live Arbitrum Sepolia evidence using canonical Paxos test USDG. The deployed contract, token, and settlement transaction all link to Arbiscan. The accounting reconciles: 60 funded, 40 paid to Auditor, 20 paid to Infrastructure, and zero accounted liability remains.”
+“Run #001 is the canonical pre-recorded evidence path for judges who do not want testnet assets. The verified NetFold contract uses canonical Paxos test USDG. Its settlement transaction is public, the accounting reconciles, and zero accounted liability remains.”
 
-Open the settlement transaction only if time allows. Do not read addresses or hashes aloud.
+Point to the contract, USDG, settlement transaction, and zero-liability fields. Do not read addresses or hashes aloud.
 
-## 1:50–2:10 — Failure evidence
+## 1:55–2:10 — Failure evidence
 
 Open `/break`.
 
-“The live-state simulations show that settlement before coverage and settlement a second time both revert with `InvalidRunState`. Separately, 40 Foundry tests cover failure, fuzz, and accounting-invariant cases. These tests are engineering evidence, not a security audit.”
+“The live-state `eth_call` simulations show that premature settlement and a second settlement are blocked. Separately, the Foundry suite covers failure, fuzz, and accounting-invariant cases. Simulations and tests are clearly labeled; neither is presented as a broadcast transaction or security audit.”
 
 Keep the distinction between `LIVE ARBITRUM SIMULATION` and `FOUNDRY TEST` visible.
 
@@ -46,4 +54,4 @@ Keep the distinction between `LIVE ARBITRUM SIMULATION` and `FOUNDRY TEST` visib
 
 Return to the roadmap on the landing page.
 
-“Today NetFold is a live USDG clearing workspace for real multi-counterparty settlement. Next are recurring clearing windows, business/team workspaces, and accounting and treasury integrations. At Founder House, Issuer Rails would explore branded business settlement tokens backed 1:1 by USDG, public reserve verification, redemption into USDG, and multi-issuer clearing through that common USDG layer. Issuer Rails is roadmap scope—not functionality in this build.”
+“Today NetFold is a live USDG clearing workspace for real multi-counterparty settlement. Next are recurring clearing windows, business and team workspaces, and accounting integrations. At Founder House, Issuer Rails would explore branded business settlement tokens backed 1:1 by USDG, public reserve verification, redemption into USDG, and multi-issuer clearing through that common layer. Issuer Rails is unimplemented roadmap scope.”

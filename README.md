@@ -8,8 +8,11 @@ NetFold is a covered USDG clearing workspace that lets stablecoin-native busines
 
 - [Open NetFold](https://netfold-delta.vercel.app)
 - [Explore live Run #001](https://netfold-delta.vercel.app/app)
+- [Inspect production-browser Run #002](https://netfold-delta.vercel.app/runs/2)
 - [Verify the settlement proof](https://netfold-delta.vercel.app/proof)
 - [Review failure evidence](https://netfold-delta.vercel.app/break)
+
+The application also includes a consolidated `/docs` guide; its public release is pending approval of this hardening pass.
 
 No wallet is required to inspect the public evidence.
 
@@ -53,7 +56,9 @@ This is a 70% reduction from gross obligations to required settlement liquidity.
 
 ## Live Arbitrum Sepolia evidence
 
-Run #001 is settled on Arbitrum Sepolia, chain ID `421614`, using canonical Paxos test USDG.
+### Run #001 — canonical protocol proof
+
+Run #001 is settled on Arbitrum Sepolia, chain ID `421614`, using canonical Paxos test USDG. It remains the canonical deep lifecycle and accounting proof.
 
 - Gross obligations: `200000000` base units = 200 USDG
 - Total net debit and credit: `60000000` base units = 60 USDG
@@ -62,6 +67,20 @@ Run #001 is settled on Arbitrum Sepolia, chain ID `421614`, using canonical Paxo
 - Accounted run liability: `0`
 - Source verification: [Sourcify exact creation and runtime match](https://sourcify.dev/server/v2/contract/421614/0x516479a53483b675Fe4629E3C63088c51cf6eFa7?fields=all)
 - Machine-readable evidence: [`contracts/evidence/421614-run-001.json`](contracts/evidence/421614-run-001.json)
+
+### Run #002 — production frontend acceptance
+
+Run #002 was created, accepted, closed, funded, and settled by Alice, Bob, and Carol through the deployed public Vercel application. Read-only RPC reconstruction independently confirmed every receipt and the final state.
+
+- Gross obligations: `20000000` base units = 20 USDG
+- Total net debit and credit: `6000000` base units = 6 USDG
+- Gross-to-net compression: `7000` bps = 70%
+- Final state: `SETTLED`
+- Accounted run liability: `0`
+- Settlement: [`0xf173…845f`](https://sepolia.arbiscan.io/tx/0xf173ecfc0232412a0e25ccc4d455819c10a50a3f424d3002c85af78a10bb845f)
+- Machine-readable evidence: [`contracts/evidence/421614-run-002.json`](contracts/evidence/421614-run-002.json)
+
+Run #002 proves that the complete browser write workflow operates against the deployed contract; it does not replace Run #001 as the canonical protocol proof.
 
 ## Contract address
 
@@ -82,10 +101,12 @@ This is canonical Paxos **test** USDG on Arbitrum Sepolia. Testnet funds have no
 - `contracts/src/NetFoldClearing.sol` — bounded clearing-run state machine.
 - `contracts/deployments/421614.json` — committed deployment receipt.
 - `contracts/evidence/421614-run-001.json` — committed live lifecycle and accounting evidence.
+- `contracts/evidence/421614-run-002.json` — committed production-browser acceptance evidence reconstructed from confirmed receipts.
 - Next.js App Router, TypeScript, and Tailwind CSS v4 — public product and proof surfaces.
 - `lib/netfold-data.ts` — validates and normalizes the committed evidence into one typed frontend source.
 - viem and wagmi — live contract reads, event discovery, injected-wallet connection, network switching, and receipt-confirmed writes.
-- `/create` and `/runs/[runId]` — real run creation and role-aware obligation, funding, settlement, expiry, and refund actions.
+- `/create` and `/runs/[runId]` — complete browser write workflow for real run creation and role-aware obligation, funding, settlement, expiry, and refund actions.
+- `/docs` — product use, protocol architecture, safety properties, proven runs, limitations, and roadmap.
 - No database, AI service, private backend, custodial wallet, or hidden transaction signer.
 
 ## Security properties
@@ -103,7 +124,7 @@ These properties are tested but not audited. NetFold provides no credit, insuran
 
 ## Test summary
 
-- Frontend: 29 presentation, evidence, validation, role/action, and transaction-error tests.
+- Frontend: 33 presentation, evidence, validation, role/action, and transaction-error tests.
 - Contracts: 40 passing tests and 0 failures.
 - Fuzzing: 3 campaigns × 256 runs.
 - Invariants: 5 invariants × 128 runs × 64 calls.

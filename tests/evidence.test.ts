@@ -1,5 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { lifecycleStatus, netfoldData, parseEvidence } from "@/lib/netfold-data";
+import { parseRun002Evidence, run002Data } from "@/lib/run-002-data";
 
 describe("committed live evidence", () => {
   it("parses the canonical Arbitrum Sepolia deployment", () => {
@@ -42,5 +43,23 @@ describe("committed live evidence", () => {
     expect(netfoldData.links.tx(netfoldData.run.settlementHash)).toBe(
       "https://sepolia.arbiscan.io/tx/0xaad186dc5b295f7b681e1c106e9d54d6c369a548c118b26719d515b0792e2af3",
     );
+  });
+});
+
+describe("production-browser acceptance evidence", () => {
+  it("reconciles Run #002 as a distinct 20/6/70 proof", () => {
+    const data = parseRun002Evidence();
+    expect(data.evidencePurpose).toBe("production-browser-acceptance");
+    expect(data.obligations.map((item) => item.obligationId)).toEqual([4, 5, 6]);
+    expect(data.display).toEqual({ gross: "20", liquidity: "6", compression: "70%" });
+    expect(data.finalState).toBe("SETTLED");
+    expect(data.accounting.accountedRunLiability).toBe(0);
+  });
+
+  it("preserves receipt-backed approval, funding, settlement, and deltas", () => {
+    expect(run002Data.transactions.usdgApproval.approvalEvent.amount).toBe(6_000_000);
+    expect(run002Data.transactions.runFunding.runFundedEvent).toMatchObject({ runId: 2, amount: 6_000_000 });
+    expect(run002Data.transactions.runSettlement.settlementPaidEvents.map((event) => event.amount)).toEqual([4_000_000, 2_000_000]);
+    expect(run002Data.balances.deltas).toMatchObject({ aliceStudio: 0, bobAuditor: 4_000_000, carolInfrastructure: 2_000_000, netFold: -6_000_000 });
   });
 });

@@ -1,0 +1,225 @@
+{
+  "evidencePurpose": "production-browser-acceptance",
+  "evidenceSource": "read-only Arbitrum Sepolia RPC reconstruction and confirmed receipts",
+  "publicApp": "https://netfold-delta.vercel.app",
+  "runUrl": "https://netfold-delta.vercel.app/runs/2",
+  "network": "Arbitrum Sepolia",
+  "chainId": 421614,
+  "explorer": "https://sepolia.arbiscan.io",
+  "netFold": "0x516479a53483b675Fe4629E3C63088c51cf6eFa7",
+  "canonicalUSDG": "0xFFC95faa3d63Cde504a05B567C600B78C0b41892",
+  "runId": 2,
+  "participants": {
+    "aliceStudio": "0x9Ef29De25594f88eB51D45Ed9547Bc6463Edbfc6",
+    "bobAuditor": "0x96f11f708b9e731a99d35AF50195b6BaD487c832",
+    "carolInfrastructure": "0x41675e5219b263500AD1Fd11B7e8a6c611075358"
+  },
+  "obligations": [
+    {
+      "obligationId": 4,
+      "payer": "0x9Ef29De25594f88eB51D45Ed9547Bc6463Edbfc6",
+      "payee": "0x96f11f708b9e731a99d35AF50195b6BaD487c832",
+      "amount": 10000000,
+      "referenceHash": "0xfb6b2f3d41518d2cc2bda8af1119db8797fcac4d0268ac66cac4052a7a3b1ba6",
+      "localHumanLabel": "NF-RUN-002-A-B",
+      "localHumanLabelStorage": "offchain/local metadata; plaintext is not stored by NetFoldClearing",
+      "localHumanLabelVerification": "keccak256(UTF-8 label) equals the onchain referenceHash",
+      "finalStatus": "ACCEPTED"
+    },
+    {
+      "obligationId": 5,
+      "payer": "0x96f11f708b9e731a99d35AF50195b6BaD487c832",
+      "payee": "0x41675e5219b263500AD1Fd11B7e8a6c611075358",
+      "amount": 6000000,
+      "referenceHash": "0x39e385b97fc1403ca5980a2280a3f60bd4919756bb3bb56e00e16919b39e8fd1",
+      "localHumanLabel": "NF-RUN-002-B-C",
+      "localHumanLabelStorage": "offchain/local metadata; plaintext is not stored by NetFoldClearing",
+      "localHumanLabelVerification": "keccak256(UTF-8 label) equals the onchain referenceHash",
+      "finalStatus": "ACCEPTED"
+    },
+    {
+      "obligationId": 6,
+      "payer": "0x41675e5219b263500AD1Fd11B7e8a6c611075358",
+      "payee": "0x9Ef29De25594f88eB51D45Ed9547Bc6463Edbfc6",
+      "amount": 4000000,
+      "referenceHash": "0xa608fe060cfca9bbe2635bcc79527f33ff620d9d02547e31d4ad4448f478e7e6",
+      "localHumanLabel": "NF-RUN-002-C-A",
+      "localHumanLabelStorage": "offchain/local metadata; plaintext is not stored by NetFoldClearing",
+      "localHumanLabelVerification": "keccak256(UTF-8 label) equals the onchain referenceHash",
+      "finalStatus": "ACCEPTED"
+    }
+  ],
+  "accounting": {
+    "grossAmount": 20000000,
+    "positions": {
+      "aliceStudio": {
+        "grossPayable": 10000000,
+        "grossReceivable": 4000000,
+        "netDebit": 6000000,
+        "netCredit": 0,
+        "funded": 6000000,
+        "refunded": 0
+      },
+      "bobAuditor": {
+        "grossPayable": 6000000,
+        "grossReceivable": 10000000,
+        "netDebit": 0,
+        "netCredit": 4000000,
+        "funded": 0,
+        "refunded": 0
+      },
+      "carolInfrastructure": {
+        "grossPayable": 4000000,
+        "grossReceivable": 6000000,
+        "netDebit": 0,
+        "netCredit": 2000000,
+        "funded": 0,
+        "refunded": 0
+      }
+    },
+    "totalNetDebit": 6000000,
+    "totalNetCredit": 6000000,
+    "totalFunded": 6000000,
+    "compressionBps": 7000,
+    "accountedRunLiability": 0,
+    "accountedRunLiabilityDerivation": "Run state is SETTLED; RunSettled total equals totalFunded; SettlementPaid totals equal all net credits; contract global totalEscrowed re-read as 0"
+  },
+  "transactions": {
+    "runCreation": {
+      "hash": "0x25b99c8e6a18f5908f8be73825963b4ec1d76c73246242bc0b080337e5026699",
+      "blockNumber": 315504823,
+      "from": "0x9Ef29De25594f88eB51D45Ed9547Bc6463Edbfc6",
+      "to": "0x516479a53483b675Fe4629E3C63088c51cf6eFa7",
+      "status": "success"
+    },
+    "obligationProposals": [
+      {
+        "obligationId": 4,
+        "hash": "0xc64461dc2910076056e022c5ca210eb7bbe60f00f7d670cc60d656481039cf53",
+        "blockNumber": 315505442,
+        "from": "0x9Ef29De25594f88eB51D45Ed9547Bc6463Edbfc6",
+        "to": "0x516479a53483b675Fe4629E3C63088c51cf6eFa7",
+        "status": "success"
+      },
+      {
+        "obligationId": 5,
+        "hash": "0x994211f9fb7320cbda740191e5d4bc093c81b0ee110b31d8bda235d2a8ba2aa5",
+        "blockNumber": 315505930,
+        "from": "0x9Ef29De25594f88eB51D45Ed9547Bc6463Edbfc6",
+        "to": "0x516479a53483b675Fe4629E3C63088c51cf6eFa7",
+        "status": "success"
+      },
+      {
+        "obligationId": 6,
+        "hash": "0xff9efa6d5550a6e39f5a2029eef856cc00968e8b99dffbdb35bce1039dcb7b94",
+        "blockNumber": 315506524,
+        "from": "0x9Ef29De25594f88eB51D45Ed9547Bc6463Edbfc6",
+        "to": "0x516479a53483b675Fe4629E3C63088c51cf6eFa7",
+        "status": "success"
+      }
+    ],
+    "obligationAcceptances": [
+      {
+        "obligationId": 5,
+        "hash": "0x26cef4c99a71beb24e8e843496f3bb3fc0f70576dcaf84304187471d333aa1aa",
+        "blockNumber": 315507137,
+        "from": "0x96f11f708b9e731a99d35AF50195b6BaD487c832",
+        "to": "0x516479a53483b675Fe4629E3C63088c51cf6eFa7",
+        "status": "success"
+      },
+      {
+        "obligationId": 6,
+        "hash": "0x0f6becd16ac0c43c4a070655f46c544ada003bedce0ff264ef872bab1e4cd78d",
+        "blockNumber": 315507670,
+        "from": "0x41675e5219b263500AD1Fd11B7e8a6c611075358",
+        "to": "0x516479a53483b675Fe4629E3C63088c51cf6eFa7",
+        "status": "success"
+      },
+      {
+        "obligationId": 4,
+        "hash": "0xf32aff5eaca4f1d14d846933555167d4c8550c3d5ababe4ea194029fda2916e8",
+        "blockNumber": 315509680,
+        "from": "0x9Ef29De25594f88eB51D45Ed9547Bc6463Edbfc6",
+        "to": "0x516479a53483b675Fe4629E3C63088c51cf6eFa7",
+        "status": "success"
+      }
+    ],
+    "runClose": {
+      "hash": "0x60a837a2ecc981adbce4124971bd7a73d42d72fac96bd9cbc4fe822bc7a89453",
+      "blockNumber": 315510208,
+      "from": "0x9Ef29De25594f88eB51D45Ed9547Bc6463Edbfc6",
+      "to": "0x516479a53483b675Fe4629E3C63088c51cf6eFa7",
+      "status": "success"
+    },
+    "usdgApproval": {
+      "hash": "0x461ead3757097e594a816ddb91886966207528d3d4e7d57ce958d83d4d721bea",
+      "blockNumber": 315511042,
+      "from": "0x9Ef29De25594f88eB51D45Ed9547Bc6463Edbfc6",
+      "to": "0xFFC95faa3d63Cde504a05B567C600B78C0b41892",
+      "status": "success",
+      "approvalEvent": {
+        "owner": "0x9Ef29De25594f88eB51D45Ed9547Bc6463Edbfc6",
+        "spender": "0x516479a53483b675Fe4629E3C63088c51cf6eFa7",
+        "amount": 6000000
+      }
+    },
+    "runFunding": {
+      "hash": "0xe05f880257b0ab335c76339ce7606d9db0356a166fb18c1e06e43d82251c5956",
+      "blockNumber": 315511357,
+      "from": "0x9Ef29De25594f88eB51D45Ed9547Bc6463Edbfc6",
+      "to": "0x516479a53483b675Fe4629E3C63088c51cf6eFa7",
+      "status": "success",
+      "runFundedEvent": {
+        "runId": 2,
+        "debtor": "0x9Ef29De25594f88eB51D45Ed9547Bc6463Edbfc6",
+        "amount": 6000000
+      }
+    },
+    "runSettlement": {
+      "hash": "0xf173ecfc0232412a0e25ccc4d455819c10a50a3f424d3002c85af78a10bb845f",
+      "blockNumber": 315512050,
+      "from": "0x9Ef29De25594f88eB51D45Ed9547Bc6463Edbfc6",
+      "to": "0x516479a53483b675Fe4629E3C63088c51cf6eFa7",
+      "status": "success",
+      "settlementPaidEvents": [
+        {
+          "creditor": "0x96f11f708b9e731a99d35AF50195b6BaD487c832",
+          "amount": 4000000
+        },
+        {
+          "creditor": "0x41675e5219b263500AD1Fd11B7e8a6c611075358",
+          "amount": 2000000
+        }
+      ],
+      "runSettledEvent": {
+        "runId": 2,
+        "total": 6000000
+      }
+    }
+  },
+  "balances": {
+    "preSettlementBlock": 315512049,
+    "preSettlement": {
+      "aliceStudio": 134000000,
+      "bobAuditor": 40000000,
+      "carolInfrastructure": 20000000,
+      "netFold": 6000000
+    },
+    "postSettlementBlock": 315512050,
+    "postSettlement": {
+      "aliceStudio": 134000000,
+      "bobAuditor": 44000000,
+      "carolInfrastructure": 22000000,
+      "netFold": 0
+    },
+    "deltas": {
+      "aliceStudio": 0,
+      "bobAuditor": 4000000,
+      "carolInfrastructure": 2000000,
+      "netFold": -6000000
+    }
+  },
+  "finalState": "SETTLED",
+  "finalStateCode": 4,
+  "recordedAt": "2026-10-04T01:25:20Z"
+}

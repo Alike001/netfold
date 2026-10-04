@@ -24,21 +24,34 @@ USDG is a dollar-denominated settlement asset suited to business obligations. Ne
 
 - `NetFoldClearing.sol`: bounded clearing state machine with debtor acceptance, close/finalize, exact covered funding, atomic settlement, expiry, and debtor refunds.
 - Canonical Paxos test USDG: settlement token on Arbitrum Sepolia.
-- Next.js App Router frontend: public landing, workspace, proof, and failure-evidence routes.
+- Next.js App Router frontend: public landing, business workspace, live run, proof, and failure-evidence routes.
+- `/create`: validates 2–8 unique participant addresses and a future deadline, submits `createRun`, waits for its receipt, decodes `RunCreated`, and opens the resulting run.
+- `/runs/[runId]`: reads arbitrary runs directly from the deployed contract and exposes only actions available to the connected wallet in the current onchain state.
+- `/docs`: one judge-facing guide to the product lifecycle, roles, architecture, safety properties, proven runs, limitations, and roadmap.
+- Complete public write path: `createRun`, `proposeObligation`, `acceptObligation`, `cancelObligation`, `cancelRun`, `closeRun`, exact USDG approval, `fund`, `settleRun`, `expireRun`, and `claimRefund`.
+- Role-aware actions: creator controls, named-payer acceptance, exact net-debtor funding, permissionless covered settlement and expiry, and debtor-only refunds.
+- Live contract reads: run, participants, obligation IDs, obligations, finalized positions, required funding, allowance, balances, coverage, and compression.
+- Event-based wallet discovery: `RunCreated` finds runs created by the connected wallet; `ObligationProposed` finds payer obligations, which are re-read before being shown as current attention items.
+- Receipt-confirmed transaction UX: wallet confirmation, broadcast hash, receipt status, Arbiscan link, state refresh, and known NetFold custom-error decoding.
 - Typed evidence layer: imports and validates committed deployment and lifecycle JSON artifacts.
-- viem/wagmi: typed Arbitrum configuration plus optional injected-wallet connection.
-- No database, AI layer, private backend, or credit engine.
+- viem/wagmi: typed Arbitrum Sepolia reads, event queries, injected-wallet connection, network switching, writes, and receipt handling.
+- No database, custodial signer, private backend, AI layer, or credit engine. Users sign every transaction in their own wallet.
 
 ## Live evidence
 
 - App: https://netfold-delta.vercel.app
 - Proof: https://netfold-delta.vercel.app/proof
+- Production acceptance run: https://netfold-delta.vercel.app/runs/2
 - Network: Arbitrum Sepolia, chain ID `421614`
 - NetFold: `0x516479a53483b675Fe4629E3C63088c51cf6eFa7`
 - Canonical Paxos test USDG: `0xFFC95faa3d63Cde504a05B567C600B78C0b41892`
-- Settlement: `0xaad186dc5b295f7b681e1c106e9d54d6c369a548c118b26719d515b0792e2af3`
-- Final accounting: 200 USDG gross, 60 USDG total net debit, 60 USDG total net credit, 70% compression, zero accounted liability.
+- Run #001 settlement: `0xaad186dc5b295f7b681e1c106e9d54d6c369a548c118b26719d515b0792e2af3`
+- Run #001 accounting: 200 USDG gross, 60 USDG total net debit, 60 USDG total net credit, 70% compression, zero accounted liability.
+- Run #002 settlement: `0xf173ecfc0232412a0e25ccc4d455819c10a50a3f424d3002c85af78a10bb845f`
+- Run #002 accounting: 20 USDG gross, 6 USDG total net debit, 6 USDG total net credit, 70% compression, zero accounted liability.
 - Verification: Sourcify exact creation and runtime match.
+
+Run #001 remains the canonical deep protocol and lifecycle proof. Run #002 is separate production-frontend acceptance evidence: Alice, Bob, and Carol completed the 10/6/4 lifecycle using real wallet transactions through the deployed public application. Its receipts and final state were independently reconstructed over read-only Arbitrum Sepolia RPC calls.
 
 ## Differentiation
 

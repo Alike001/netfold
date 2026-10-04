@@ -228,7 +228,27 @@ function findRevertData(error: unknown): `0x${string}` | undefined {
   return undefined;
 }
 
+function collectErrorText(error: unknown, seen = new Set<unknown>()): string {
+  if (!error || typeof error !== "object" || seen.has(error)) return "";
+  seen.add(error);
+  const candidate = error as Record<string, unknown>;
+  const fields = [candidate.name, candidate.message, candidate.shortMessage, candidate.details];
+  if (Array.isArray(candidate.metaMessages)) fields.push(candidate.metaMessages.join(" "));
+  if (candidate.cause && candidate.cause !== error) fields.push(collectErrorText(candidate.cause, seen));
+  return fields.filter((value): value is string => typeof value === "string").join(" ");
+}
+
+function isStaleGasEstimateError(error: unknown) {
+  const normalized = collectErrorText(error).toLowerCase().replace(/[\s_-]+/g, "");
+  return normalized.includes("maxfeepergas") &&
+    normalized.includes("basefee") &&
+    (normalized.includes("lessthan") || normalized.includes("lowerthan") || normalized.includes("below"));
+}
+
 export function formatTransactionError(error: unknown) {
+  if (isStaleGasEstimateError(error)) {
+    return "Network gas price changed before broadcast. Retry with your wallet's latest gas estimate or a higher max fee.";
+  }
   const data = findRevertData(error);
   if (data) {
     try {

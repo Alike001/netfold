@@ -122,6 +122,21 @@ describe("role and funding action derivation", () => {
 });
 
 describe("transaction errors", () => {
+  const gasMessage = "max fee per gas less than block base fee: maxFeePerGas 100, baseFee 120";
+
+  it("classifies stale EIP-1559 gas estimates before generic contract errors", () => {
+    expect(formatTransactionError(new Error(gasMessage))).toBe(
+      "Network gas price changed before broadcast. Retry with your wallet's latest gas estimate or a higher max fee.",
+    );
+  });
+
+  it("finds maxFeePerGas and baseFee errors nested in wallet causes", () => {
+    expect(formatTransactionError({
+      message: "The contract function reverted",
+      cause: { details: "maxFeePerGas is lower than baseFee for the current block" },
+    })).toMatch(/^Network gas price changed before broadcast/);
+  });
+
   it("formats known NetFold custom errors", () => {
     const data = encodeErrorResult({ abi: netFoldAbi, errorName: "NotRunCreator", args: [1n, bob] });
     expect(formatTransactionError({ data })).toBe("Only the run creator can perform this action.");

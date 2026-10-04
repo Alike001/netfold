@@ -4,8 +4,15 @@
 
 - [x] GitHub repository is public: https://github.com/Alike001/netfold
 - [x] Live application is public: https://netfold-delta.vercel.app
-- [x] Direct routes `/`, `/app`, `/proof`, and `/break` load publicly
+- [x] Direct route `/` loads publicly
+- [x] Direct route `/app` loads publicly
+- [x] Direct route `/create` loads publicly
+- [x] Direct route `/runs/1` loads publicly
+- [x] Direct route `/runs/2` loads publicly
+- [x] Direct route `/proof` loads publicly
+- [x] Direct route `/break` loads publicly
 - [x] GitHub navigation links resolve to the canonical repository
+- [x] Full public write workflow is implemented
 
 ## Onchain evidence
 
@@ -16,6 +23,15 @@
 - [x] Final run state is `SETTLED`
 - [x] Accounted run liability is zero
 - [x] Sourcify exact-match verification is documented
+
+## Production-browser acceptance
+
+- [x] Production-browser Run #002 executed with real wallet transactions
+- [x] Run #002 uses Alice → Bob 10, Bob → Carol 6, Carol → Alice 4 USDG
+- [x] Run #002 proves 20 USDG gross, 6 USDG required liquidity, and 70% compression
+- [x] Run #002 explorer receipts checked through read-only RPC reconstruction
+- [x] Run #002 final state and balance movements checked
+- [ ] New `/docs` route deployed and checked publicly after approval
 
 ## Quality and security hygiene
 
@@ -31,6 +47,8 @@
 
 - [x] Project description prepared
 - [x] 2–3 minute demo script prepared
+- [x] Demo script reflects the Phase 5 public write workflow
+- [x] Production write flow used real wallet transactions
 - [x] Judge Q&A prepared
 - [ ] Demo video recorded and reviewed
 - [ ] Final buildathon submission form completed

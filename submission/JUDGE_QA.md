@@ -20,6 +20,14 @@ Yes. NetFold applies the liquidity principle to stablecoin-native operations. It
 
 An accounting system can calculate balances. NetFold additionally records explicit debtor acceptance, enforces an immutable close, requires complete onchain coverage, and atomically settles the final positions from public state.
 
+## Can I actually use NetFold myself?
+
+Yes. On Arbitrum Sepolia, a connected wallet can create a clearing run, propose obligations, invite counterparties, collect debtor acceptance, close the run, fund an exact finalized debit in canonical Paxos test USDG, settle a fully covered run, and use the expiry/refund path when applicable.
+
+Judges who do not want to obtain testnet ETH or USDG can use Run #001 as the canonical pre-recorded evidence path. Its contract, obligations, settlement transaction, balance reconciliation, failure simulations, and zero accounted liability are publicly inspectable without connecting a wallet.
+
+Run #002 separately proves the production frontend path: three wallets completed creation, proposal, acceptance, close, exact approval, funding, and settlement through the deployed public application.
+
 ## What happens if a debtor doesn't fund?
 
 The run cannot settle. NetFold provides no credit and does not mutualize the missing amount. After expiry, a debtor that did fund can reclaim its own contribution.
@@ -42,7 +50,7 @@ NetFold makes no legal-netting claim. The prototype demonstrates technical oblig
 
 ## What is live vs simulated?
 
-The deployment and full 100/60/40 lifecycle are live Arbitrum Sepolia transactions. The premature and double-settlement failures are live-state `eth_call` simulations and were not broadcast. The broader attack cases are local Foundry tests.
+The deployment and both completed runs are live Arbitrum Sepolia transactions. Run #001 is the canonical 100/60/40 protocol proof; Run #002 is the 10/6/4 production-frontend acceptance proof. The premature and double-settlement failures are live-state `eth_call` simulations and were not broadcast. The broader attack cases are local Foundry tests.
 
 ## Why does only 60 USDG need to be funded?
 
