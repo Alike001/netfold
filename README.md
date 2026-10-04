@@ -12,7 +12,7 @@ NetFold is a covered USDG clearing workspace that lets stablecoin-native busines
 - [Verify the settlement proof](https://netfold-delta.vercel.app/proof)
 - [Review failure evidence](https://netfold-delta.vercel.app/break)
 
-The application also includes a consolidated `/docs` guide; its public release is pending approval of this hardening pass.
+The application also includes a consolidated `/docs` guide covering product usage, protocol architecture, safety properties, proven runs, limitations, and roadmap.
 
 No wallet is required to inspect the public evidence.
 
@@ -92,7 +92,7 @@ Run #002 proves that the complete browser write workflow operates against the de
 
 This is canonical Paxos **test** USDG on Arbitrum Sepolia. Testnet funds have no value. `MockUSDG` is used only by the local Foundry test suite.
 
-## Settlement transaction
+## Run #001 settlement transaction
 
 [`0xaad186dc5b295f7b681e1c106e9d54d6c369a548c118b26719d515b0792e2af3`](https://sepolia.arbiscan.io/tx/0xaad186dc5b295f7b681e1c106e9d54d6c369a548c118b26719d515b0792e2af3), block `315469249`.
 
